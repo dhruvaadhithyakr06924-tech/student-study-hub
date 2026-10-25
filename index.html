@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Study Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <a class="logo" href="#"><span class="logo-icon">📚</span><span>Student <b>Study Hub</b></span></a>
+    <nav><a href="#subjects">Subjects</a><a href="#planner">Study Planner</a><a href="#quiz">Quick Quiz</a></nav>
+    <button class="theme-button" id="theme-toggle" aria-label="Toggle dark mode">🌙 Theme</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">LEARN • PRACTISE • ACHIEVE</p>
+        <h1>Your learning journey<br>starts <span>right here.</span></h1>
+        <p class="hero-description">Keep your subjects organised, plan your study time, and test your knowledge — all in one place.</p>
+        <a class="button primary" href="#subjects">Explore subjects <span>→</span></a>
+        <div class="hero-numbers">
+          <div><strong id="subject-total">6</strong><small>Study subjects</small></div>
+          <div><strong id="task-total">0</strong><small>Pending tasks</small></div>
+          <div><strong id="completed-total">0</strong><small>Tasks completed</small></div>
+        </div>
+      </div>
+      <div class="hero-illustration" aria-label="Books and graduation cap illustration">
+        <div class="illustration-circle"></div>
+        <div class="book-stack">📚</div><span class="float-note note-one">✏️ Stay focused!</span><span class="float-note note-two">🎯 Keep learning</span>
+      </div>
+    </section>
+
+    <section class="section subjects-section" id="subjects">
+      <div class="section-heading">
+        <div><p class="eyebrow">YOUR CLASSROOM</p><h2>Explore your subjects</h2><p class="muted">Choose a subject to view its modules and notes.</p></div>
+        <label class="search"><span>⌕</span><input id="subject-search" type="search" placeholder="Search subjects..." aria-label="Search subjects"></label>
+      </div>
+      <div class="filter-row" id="subject-filters">
+        <button class="filter active" data-filter="All">All subjects</button>
+        <button class="filter" data-filter="Programming">Programming</button>
+        <button class="filter" data-filter="Core CS">Core CS</button>
+        <button class="filter" data-filter="Web">Web</button>
+      </div>
+      <div class="subject-grid" id="subject-grid"></div>
+      <p class="empty-message hidden" id="subject-empty">No subjects found. Try another search.</p>
+    </section>
+
+    <section class="section planner-section" id="planner">
+      <div class="section-heading">
+        <div><p class="eyebrow">MAKE A PLAN</p><h2>Study planner</h2><p class="muted">Add your study tasks and track your progress.</p></div>
+        <div class="progress-box"><div class="progress-label"><span>Task progress</span><strong id="progress-text">0%</strong></div><div class="progress-track"><div id="progress-fill"></div></div></div>
+      </div>
+      <form class="task-form" id="task-form">
+        <input id="task-input" type="text" placeholder="e.g. Revise Java Module 1" maxlength="100" required aria-label="New study task">
+        <select id="task-subject" aria-label="Task subject">
+          <option value="General">General</option><option>Web Technology</option><option>OOP Using Java</option><option>Data Structures</option><option>Computer Organization</option><option>Mathematics</option><option>Computer Networks</option>
+        </select>
+        <button class="button primary" type="submit">＋ Add task</button>
+      </form>
+      <div class="task-toolbar"><div class="task-filters" id="task-filters"><button type="button" class="task-filter active" data-task-filter="All">All</button><button type="button" class="task-filter" data-task-filter="Pending">Pending</button><button type="button" class="task-filter" data-task-filter="Completed">Completed</button></div><button class="text-button" id="clear-completed" type="button">Clear completed</button></div>
+      <div id="task-list" class="task-list"></div>
+      <p class="empty-message hidden" id="task-empty">No tasks here yet. Add your first study task above!</p>
+    </section>
+
+    <section class="section quiz-section" id="quiz">
+      <div class="section-heading"><div><p class="eyebrow">TEST YOURSELF</p><h2>Quick quiz</h2><p class="muted">Answer three Web Technology questions and check your score.</p></div><span class="quiz-badge">🧠 Practice time</span></div>
+      <div class="quiz-card" id="quiz-card">
+        <div class="quiz-top"><span id="question-count">Question 1 of 3</span><span id="quiz-score-label">Score: 0</span></div>
+        <div class="quiz-progress"><div id="quiz-progress-fill"></div></div>
+        <h3 id="question-text"></h3>
+        <div id="answer-options" class="answer-options"></div>
+        <p id="answer-feedback" class="answer-feedback" aria-live="polite"></p>
+        <div class="quiz-actions"><button class="button secondary" id="restart-quiz" type="button">↻ Restart</button><button class="button primary" id="next-question" type="button" disabled>Next question →</button></div>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="logo" href="#"><span class="logo-icon">📚</span><span>Student <b>Study Hub</b></span></a><p>Web Technology Assignment • HTML, CSS & JavaScript</p><small>Your study tools in one simple place.</small></footer>
+
+  <div class="modal-overlay hidden" id="subject-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal">
+      <button class="close-modal" id="close-modal" aria-label="Close subject details">✕</button>
+      <div class="modal-icon" id="modal-icon">📘</div><p class="eyebrow">SUBJECT DETAILS</p><h2 id="modal-title">Subject</h2><p class="muted" id="modal-description"></p>
+      <h3>Modules</h3><div id="module-list" class="module-list"></div>
+      <div class="note-box"><strong>Study tip</strong><p>Review the module topics, make short notes, and practise questions regularly. You can add revision tasks in your Study Planner.</p></div>
+      <button class="button primary full-width" id="add-revision-task">＋ Add revision task</button>
+    </div>
+  </div>
+  <div class="toast" id="toast" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
