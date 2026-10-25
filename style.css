@@ -32,20 +32,6 @@ body.dark{--ink:#e9ecf7;--muted:#a9b0c4;--pale:#20263a;--line:#353d55;--white:#2
   vertical-align: middle;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 600;
-}
 
-.logo-icon {
-  font-size: 35px;
-}
-
-.logo-text b {
   color: #38bdf8;
 }
