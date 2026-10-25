@@ -8,14 +8,25 @@
 </head>
 <body>
   <header class="header">
-    <a class="logo" href="#">
-  <img
-    src="Study%20Hub%20Neon%20Learning%20Emblem.png"
-    alt="Study Hub Logo"
-    class="logo-icon"
-  >
-  <span>Student <b>Study Hub</b></span>
-</a>
+    
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.logo-icon {
+  font-size: 35px;
+}
+
+.logo-text b {
+  color: #38bdf8;
+}
+
     <nav><a href="#subjects">Subjects</a><a href="#planner">Study Planner</a><a href="#quiz">Quick Quiz</a></nav>
     <button class="theme-button" id="theme-toggle" aria-label="Toggle dark mode">🌙 Theme</button>
   </header>
